@@ -4,6 +4,7 @@ import { HiDownload, HiCode, HiSparkles } from "react-icons/hi";
 import RadialGradientBackground from "../backgrounds/RadialGradientBackground";
 import FadeIn from "../animations/FadeIn";
 import { ABOUT_STATS, PERSONAL_INFO } from "@/utils/constants";
+import { techStack } from "@/data";
 
 const About = () => {
   return (
@@ -158,6 +159,35 @@ const About = () => {
             </div>
           </FadeIn>
         </div>
+
+        {/* Skills Grid Section */}
+        <FadeIn delay={500}>
+          <div className="flex flex-col items-center gap-8">
+            <div className="text-center">
+              <h3 className="mb-2 text-2xl font-normal text-white">
+                Tech Stack & Expertise
+              </h3>
+              <p className="text-sm text-white/60">
+                Technologies I work with to build amazing products
+              </p>
+            </div>
+            <div className="grid w-full max-w-4xl grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
+              {techStack.map((skill, index) => (
+                <div
+                  key={index}
+                  className="group hover:border-primary/50 relative flex flex-col items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-6 transition-all duration-300 hover:scale-105 hover:bg-white/10"
+                >
+                  <skill.icon className="text-primary text-3xl" />
+                  <div className="text-center text-sm font-medium text-white/80">
+                    {skill.name}
+                  </div>
+                  {/* Hover Glow Effect */}
+                  <div className="from-primary/0 to-primary/0 group-hover:from-primary/10 group-hover:to-primary/10 pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br transition-all duration-300"></div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </FadeIn>
       </div>
     </section>
   );
