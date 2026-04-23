@@ -13,7 +13,7 @@
   --color-primary: #8dff69;
 
   --font-sans: var(--font-libre-franklin);
-  --font-serif: var(--font-eczar);
+  --font-serif: var(--font-libre-caslon-display);
 }
 
 @layer base {

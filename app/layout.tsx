@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Libre_Franklin, Eczar } from "next/font/google";
+import { Libre_Caslon_Display, Libre_Franklin } from "next/font/google";
 import "./globals.css";
 
 const libreFranklin = Libre_Franklin({
@@ -9,11 +9,11 @@ const libreFranklin = Libre_Franklin({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
-const eczar = Eczar({
-  variable: "--font-eczar",
+const libreCaslonDisplay = Libre_Caslon_Display({
+  variable: "--font-libre-caslon-display",
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600", "700", "800"],
+  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -30,7 +30,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${libreFranklin.variable} ${eczar.variable} h-full antialiased`}
+      className={`${libreFranklin.variable} ${libreCaslonDisplay.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">{children}</body>
     </html>
