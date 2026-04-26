@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { testimonials, testimonialStats } from "@/data";
 import { useState, useRef } from "react";
 import {
@@ -17,28 +18,20 @@ const Testimonials = () => {
 
   const scrollToIndex = (index: number) => {
     setCurrentIndex(index);
-
     if (scrollContainerRef.current) {
-      const container = scrollContainerRef.current;
-      const cardWidth = container.offsetWidth;
-
-      container.scrollTo({
-        left: cardWidth * index,
+      scrollContainerRef.current.scrollTo({
+        left: scrollContainerRef.current.offsetWidth * index,
         behavior: "smooth",
       });
     }
   };
 
-  const nextTestimonial = () => {
-    const newIndex = (currentIndex + 1) % testimonials.length;
-    scrollToIndex(newIndex);
-  };
-
-  const prevTestimonial = () => {
-    const newIndex =
-      (currentIndex - 1 + testimonials.length) % testimonials.length;
-    scrollToIndex(newIndex);
-  };
+  const nextTestimonial = () =>
+    scrollToIndex((currentIndex + 1) % testimonials.length);
+  const prevTestimonial = () =>
+    scrollToIndex(
+      (currentIndex - 1 + testimonials.length) % testimonials.length,
+    );
 
   return (
     <section
@@ -54,13 +47,13 @@ const Testimonials = () => {
         <FadeIn delay={0}>
           <div className="mb-16 text-center">
             <div className="border-primary/30 bg-primary/10 mb-6 inline-flex items-center gap-2 rounded-full border px-4 py-2">
-              <HiOutlineChatBubbleLeftRight className="text-primary h-4 w-4" />
-              <span className="text-primary text-sm font-medium tracking-wider uppercase">
+              <HiOutlineChatBubbleLeftRight className="text-primary size-4" />
+              <span className="text-primary text-sm font-medium tracking-wider">
                 Testimonials
               </span>
             </div>
 
-            <h2 className="mx-auto mb-4 max-w-xl text-4xl font-normal text-white lg:text-5xl">
+            <h2 className="mx-auto mb-4 font-normal text-white">
               Trusted by forward-thinking teams
             </h2>
 
@@ -76,40 +69,36 @@ const Testimonials = () => {
             <div
               ref={scrollContainerRef}
               className="overflow-x-hidden scroll-smooth"
-              style={{
-                scrollSnapType: "x mandatory",
-              }}
+              style={{ scrollSnapType: "x mandatory" }}
             >
               <div className="flex">
                 {testimonials.map((testimonial, index) => (
                   <div
                     key={testimonial.id}
                     className="w-full shrink-0 px-4"
-                    style={{
-                      scrollSnapAlign: "start",
-                    }}
+                    style={{ scrollSnapAlign: "start" }}
                   >
                     <div className="mx-auto max-w-4xl">
                       <div className="flex flex-col items-stretch gap-6 md:flex-row">
                         {/* Image */}
                         <div className="relative w-full md:w-1/3">
                           <div className="relative h-72 overflow-hidden rounded-xl">
-                            <img
+                            <Image
                               src={testimonial.image}
-                              alt={testimonial.name}
-                              className="h-full w-full object-cover grayscale transition-all duration-500 hover:grayscale-0"
+                              alt={`${testimonial.name} — ${testimonial.role}`}
+                              fill
+                              className="object-cover grayscale transition-all duration-500 hover:grayscale-0"
+                              sizes="(max-width: 768px) 100vw, 33vw"
                             />
 
                             {/* Stat badge */}
                             <div className="absolute right-4 bottom-4 left-4">
-                              <div className="rounded-xl bg-black/60 p-4 shadow-lg">
-                                <div>
-                                  <div className="text-primary mb-1 text-2xl font-semibold">
-                                    {testimonialStats[index]?.value}
-                                  </div>
-                                  <div className="text-sm font-semibold text-gray-100">
-                                    {testimonialStats[index]?.label}
-                                  </div>
+                              <div className="rounded-xl bg-black/60 p-4 shadow-lg backdrop-blur-sm">
+                                <div className="text-primary mb-1 text-2xl font-semibold">
+                                  {testimonialStats[index]?.value}
+                                </div>
+                                <div className="text-sm font-semibold text-gray-100">
+                                  {testimonialStats[index]?.label}
                                 </div>
                               </div>
                             </div>
@@ -120,11 +109,10 @@ const Testimonials = () => {
                           <div className="mb-6">
                             <FaQuoteLeft className="text-primary mb-4 size-7 opacity-50" />
                             <p className="text-lg leading-relaxed text-white md:text-xl">
-                              "{testimonial.quote}"
+                              &ldquo;{testimonial.quote}&rdquo;
                             </p>
                           </div>
 
-                          {/* Footer */}
                           <div className="flex items-center justify-between">
                             <div>
                               <div className="mb-1 font-medium text-white">
@@ -134,12 +122,11 @@ const Testimonials = () => {
                                 {testimonial.role}, {testimonial.company}
                               </div>
                             </div>
-
                             <div className="flex gap-1">
                               {[...Array(testimonial.rating)].map((_, i) => (
                                 <HiStar
                                   key={i}
-                                  className="fill-primary text-primary h-4 w-4"
+                                  className="fill-primary text-primary size-4"
                                 />
                               ))}
                             </div>
@@ -152,35 +139,35 @@ const Testimonials = () => {
               </div>
             </div>
 
-            {/* Dots */}
+            {/* Dot indicators */}
             <div className="mt-10 flex items-center justify-center gap-2">
               {testimonials.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => scrollToIndex(index)}
+                  aria-label={`Go to testimonial ${index + 1}`}
                   className={`rounded-full transition-all duration-300 ${
                     index === currentIndex
                       ? "h-2 w-6 bg-white"
                       : "h-2 w-2 bg-white/30 hover:bg-white/50"
                   }`}
-                  aria-label={`Go to testimonial ${index + 1}`}
                 />
               ))}
             </div>
 
-            {/* Arrows */}
+            {/* Arrow buttons */}
             <button
               onClick={prevTestimonial}
-              className="absolute top-1/2 left-0 z-10 flex size-10 -translate-x-2 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-white/10 backdrop-blur-sm transition-all duration-300 hover:bg-white/20 lg:size-12 lg:-translate-x-4"
               aria-label="Previous testimonial"
+              className="absolute top-1/2 left-0 z-10 flex size-10 -translate-x-2 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-white/10 backdrop-blur-sm transition-all duration-300 hover:bg-white/20 lg:size-12 lg:-translate-x-4"
             >
               <HiChevronLeft className="size-6 text-white" />
             </button>
 
             <button
               onClick={nextTestimonial}
-              className="absolute top-1/2 right-0 z-10 flex size-10 translate-x-2 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-white/10 backdrop-blur-sm transition-all duration-300 hover:bg-white/20 lg:size-12 lg:translate-x-4"
               aria-label="Next testimonial"
+              className="absolute top-1/2 right-0 z-10 flex size-10 translate-x-2 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-white/10 backdrop-blur-sm transition-all duration-300 hover:bg-white/20 lg:size-12 lg:translate-x-4"
             >
               <HiChevronRight className="size-6 text-white" />
             </button>

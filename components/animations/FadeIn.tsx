@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useRef, useState } from "react";
 
 interface FadeInProps {
@@ -17,27 +19,25 @@ const FadeIn: React.FC<FadeInProps> = ({
   const elementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const element = elementRef.current;
+    if (!element) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // Trigger animation when element enters viewport
         if (entry.isIntersecting && !isVisible) {
           setIsVisible(true);
         }
       },
       {
-        threshold: threshold,
-        rootMargin: "0px 0px 50px 0px", // Trigger slightly before element enters
+        threshold,
+        rootMargin: "0px 0px 50px 0px",
       },
     );
 
-    if (elementRef.current) {
-      observer.observe(elementRef.current);
-    }
+    observer.observe(element);
 
     return () => {
-      if (elementRef.current) {
-        observer.unobserve(elementRef.current);
-      }
+      observer.unobserve(element);
     };
   }, [threshold, isVisible]);
 

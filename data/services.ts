@@ -1,14 +1,12 @@
 import { IconType } from "react-icons";
-
 import {
   HiOutlineCpuChip,
   HiOutlineChatBubbleLeftRight,
   HiOutlineChartBar,
   HiOutlineCloud,
   HiOutlineSparkles,
+  HiOutlineCircleStack,
 } from "react-icons/hi2";
-
-import { HiOutlineDatabase } from "react-icons/hi";
 
 export type Service = {
   id: number;
@@ -27,7 +25,7 @@ export const services: Service[] = [
   },
   {
     id: 2,
-    icon: HiOutlineDatabase,
+    icon: HiOutlineCircleStack,
     title: "Data Engineering",
     description:
       "Designing robust ETL pipelines, data warehouses, and real-time data processing systems for large-scale applications.",

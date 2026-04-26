@@ -1,25 +1,16 @@
-// data.ts
 import {
-  SiReact,
-  SiNextdotjs,
-  SiTypescript,
-  SiTailwindcss,
-  SiNodedotjs,
-  SiMongodb,
   SiPython,
   SiTensorflow,
   SiPytorch,
+  SiScikitlearn,
+  SiPandas,
+  SiApachespark,
+  SiPostgresql,
+  SiFastapi,
+  SiDocker,
+  SiGooglecloud,
 } from "react-icons/si";
-import {
-  HiCode,
-  HiChip,
-  HiDatabase,
-  HiChartBar,
-  HiCube,
-  HiFire,
-  HiGlobe,
-  HiServer,
-} from "react-icons/hi";
+import { HiCpuChip, HiCube, HiCodeBracket } from "react-icons/hi2";
 
 export type SkillLevel = "Expert" | "Advanced" | "Intermediate";
 
@@ -32,12 +23,12 @@ export type Skill = {
 };
 
 export const techStack = [
-  { name: "React.js", icon: SiReact, color: "#61DAFB" },
-  { name: "Next.js", icon: SiNextdotjs, color: "#000000" },
-  { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
-  { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
-  { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
-  { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
+  { name: "Python", icon: SiPython },
+  { name: "TensorFlow", icon: SiTensorflow },
+  { name: "PyTorch", icon: SiPytorch },
+  { name: "Scikit-learn", icon: SiScikitlearn },
+  { name: "Pandas", icon: SiPandas },
+  { name: "Apache Spark", icon: SiApachespark },
 ];
 
 export const skills: Skill[] = [
@@ -51,7 +42,7 @@ export const skills: Skill[] = [
   {
     id: 2,
     name: "Machine Learning",
-    icon: HiChip,
+    icon: HiCpuChip,
     level: "Expert",
     experience: "3+ years",
   },
@@ -65,21 +56,21 @@ export const skills: Skill[] = [
   {
     id: 4,
     name: "Data Structures & Algo",
-    icon: HiCode,
+    icon: HiCodeBracket,
     level: "Advanced",
     experience: "2+ years",
   },
   {
     id: 5,
-    name: "SQL",
-    icon: HiDatabase,
+    name: "SQL & PostgreSQL",
+    icon: SiPostgresql,
     level: "Expert",
     experience: "3+ years",
   },
   {
     id: 6,
     name: "Pandas & NumPy",
-    icon: HiChartBar,
+    icon: SiPandas,
     level: "Expert",
     experience: "3+ years",
   },
@@ -99,23 +90,39 @@ export const skills: Skill[] = [
   },
   {
     id: 9,
-    name: "APIs & FastAPI",
-    icon: HiGlobe,
+    name: "FastAPI",
+    icon: SiFastapi,
     level: "Advanced",
     experience: "2+ years",
   },
   {
     id: 10,
-    name: "Big Data (Spark)",
-    icon: HiServer,
+    name: "Apache Spark",
+    icon: SiApachespark,
     level: "Intermediate",
     experience: "1+ year",
   },
   {
     id: 11,
-    name: "MLOps",
-    icon: HiFire,
+    name: "MLOps & Docker",
+    icon: SiDocker,
     level: "Intermediate",
     experience: "1+ year",
   },
+  {
+    id: 12,
+    name: "Cloud Platforms",
+    icon: SiGooglecloud,
+    level: "Intermediate",
+    experience: "1+ year",
+  },
+];
+
+export const skillsForChart = [
+  { name: "Data Analysis", value: 92 },
+  { name: "Machine Learning", value: 88 },
+  { name: "Deep Learning", value: 80 },
+  { name: "NLP", value: 82 },
+  { name: "Data Engineering", value: 76 },
+  { name: "MLOps", value: 68 },
 ];

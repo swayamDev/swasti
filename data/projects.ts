@@ -1,10 +1,10 @@
 import {
   HiOutlineSparkles,
-  HiOutlineDatabase,
+  HiOutlineCircleStack,
   HiOutlineChartBar,
   HiOutlineDocumentText,
-  HiOutlineViewGrid,
-} from "react-icons/hi";
+  HiOutlineSquares2X2,
+} from "react-icons/hi2";
 
 export type Category =
   | "All"
@@ -30,70 +30,72 @@ export const projects: Project[] = [
     id: 1,
     title: "AI Resume Screening System",
     description:
-      "Built an NLP-based system to automatically screen resumes and rank candidates using semantic similarity.",
+      "NLP-based system that automatically screens resumes and ranks candidates using semantic similarity and transformer embeddings.",
     image: "/projects/project1.webp",
     category: "NLP",
     technologies: ["Python", "Scikit-learn", "NLTK", "FastAPI"],
     metrics: "Reduced manual screening time by 70%",
-    demoUrl: "https://timetoprogram.com/projects",
+    demoUrl: "https://github.com",
     githubUrl: "https://github.com",
   },
   {
     id: 2,
     title: "Real-Time Fraud Detection Pipeline",
     description:
-      "Streaming pipeline with ML models to detect fraudulent transactions in real time.",
+      "Streaming data pipeline with ensemble ML models to detect fraudulent transactions in real time with sub-second latency.",
     image: "/projects/project2.webp",
     category: "Data Engineering",
     technologies: ["Kafka", "Spark", "Python", "AWS"],
-    metrics: "Detected 95% fraud in real-time",
-    demoUrl: "https://timetoprogram.com/projects",
+    metrics: "Detected 95% of fraud in real-time",
+    demoUrl: "https://github.com",
     githubUrl: "https://github.com",
   },
   {
     id: 3,
     title: "Customer Churn Prediction",
     description:
-      "Predictive ML model to identify customers likely to churn using classification algorithms.",
+      "Predictive ML model to identify customers at risk of churning using gradient boosting and SHAP explainability.",
     image: "/projects/project3.webp",
     category: "Analytics",
-    technologies: ["Python", "XGBoost", "Pandas"],
+    technologies: ["Python", "XGBoost", "SHAP", "Pandas"],
     metrics: "Improved retention by 30%",
-    demoUrl: "https://timetoprogram.com/projects",
+    demoUrl: "https://github.com",
     githubUrl: "https://github.com",
   },
   {
     id: 4,
-    title: "AI Chatbot with Context",
+    title: "Context-Aware AI Chatbot",
     description:
-      "Context-aware chatbot using embeddings and transformer models.",
+      "RAG-based chatbot using LLMs, vector embeddings, and LangChain for accurate, context-aware multi-turn conversations.",
     image: "/projects/project4.webp",
     category: "AI/ML",
-    technologies: ["LangChain", "OpenAI", "Vector DB"],
-    metrics: "Handled 10k+ queries",
-    demoUrl: "https://timetoprogram.com/projects",
+    technologies: ["LangChain", "OpenAI", "Pinecone", "FastAPI"],
+    metrics: "Handled 10k+ user queries",
+    demoUrl: "https://github.com",
     githubUrl: "https://github.com",
   },
   {
     id: 5,
-    title: "Data Warehouse ETL Pipeline",
-    description: "Scalable ETL system for large-scale analytics and reporting.",
+    title: "Scalable ETL Data Warehouse",
+    description:
+      "Automated ETL system for ingesting, transforming, and loading large-scale data into a cloud analytics warehouse.",
     image: "/projects/project5.webp",
     category: "Data Engineering",
-    technologies: ["Airflow", "PostgreSQL", "AWS"],
+    technologies: ["Airflow", "PostgreSQL", "dbt", "AWS Redshift"],
     metrics: "Processed 1M+ records daily",
-    demoUrl: "https://timetoprogram.com/projects",
+    demoUrl: "https://github.com",
     githubUrl: "https://github.com",
   },
   {
     id: 6,
-    title: "Image Classification Model",
-    description: "CNN-based deep learning model using transfer learning.",
+    title: "Medical Image Classification",
+    description:
+      "CNN-based deep learning model using transfer learning (EfficientNet) to classify medical images with high precision.",
     image: "/projects/project6.webp",
     category: "AI/ML",
-    technologies: ["TensorFlow", "Keras", "OpenCV"],
-    metrics: "Achieved 92% accuracy",
-    demoUrl: "https://timetoprogram.com/projects",
+    technologies: ["TensorFlow", "Keras", "OpenCV", "EfficientNet"],
+    metrics: "Achieved 92% diagnostic accuracy",
+    demoUrl: "https://github.com",
     githubUrl: "https://github.com",
   },
 ];
@@ -107,9 +109,9 @@ export const categories: Category[] = [
 ];
 
 export const categoryIcons: Record<Category, React.ElementType> = {
-  All: HiOutlineViewGrid,
+  All: HiOutlineSquares2X2,
   "AI/ML": HiOutlineSparkles,
-  "Data Engineering": HiOutlineDatabase,
+  "Data Engineering": HiOutlineCircleStack,
   Analytics: HiOutlineChartBar,
   NLP: HiOutlineDocumentText,
 };
