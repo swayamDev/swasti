@@ -1,3 +1,4 @@
+import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import About from "@/components/sections/About";
 import Contact from "@/components/sections/Contact";
@@ -9,7 +10,7 @@ import Testimonials from "@/components/sections/Testimonials";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-black pb-[100vh]">
+    <div className="min-h-screen bg-black">
       <Header />
 
       <main>
@@ -21,6 +22,8 @@ export default function Home() {
         <Testimonials />
         <Contact />
       </main>
+
+      <Footer />
     </div>
   );
 }
